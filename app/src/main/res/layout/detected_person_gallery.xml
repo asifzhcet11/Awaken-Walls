@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:diagonal="http://schemas.android.com/apk/res-auto"
+    tools:context="de.tu_chemnitz.sse.and2015.AwakenWalls.MainActivity"
+    android:background="#cecece">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
+            android:id="@+id/detectedPersonGallery"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            diagonal:icvp_interpolator="@android:anim/accelerate_decelerate_interpolator"
+            diagonal:icvp_scroll_duration="250"
+            diagonal:icvp_center_page_scale_offset="20dp"
+            diagonal:icvp_min_page_scale_offset="5dp"
+            diagonal:icvp_max_page_scale="0.8"
+            diagonal:icvp_min_page_scale="0.55"
+            diagonal:icvp_medium_scaled="false"
+            android:layout_alignTop="@+id/linearLayout2"
+            android:layout_alignParentStart="true"
+             />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="vertical"
+            android:layout_gravity="bottom">
+
+
+
+            <custom_font.MyTextView
+                android:id="@+id/getImagesButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="GET"
+                android:textStyle="bold"
+                android:background="@drawable/round"
+                android:textColor="#CBD1DC"
+                android:gravity="center"
+                android:padding="14dp"
+                android:onClick="getImages"
+                android:layout_alignBaseline="@+id/showImagesButton"
+                android:layout_alignBottom="@+id/showImagesButton"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="50dp" />
+
+            <custom_font.MyTextView
+                android:id="@+id/showImagesButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="SHOW"
+                android:textStyle="bold"
+                android:background="@drawable/round"
+                android:textColor="#CBD1DC"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_marginEnd="50dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="showImages"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="Status Update"
+                android:id = "@+id/statusUpdate"/>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+</RelativeLayout>

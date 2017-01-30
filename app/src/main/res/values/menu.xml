@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="menu_icons">
+        <item>@drawable/menu_image_logo</item>
+        <item>@drawable/menu_video_logo</item>
+        <item>@drawable/switch_off</item>
+        <item>@drawable/menu_sign_out_logo</item>
+        <item>@drawable/switch_on</item>
+    </array>
+
+    <array name="menu_icons_name">
+        <item>IMAGES</item>
+        <item>GO LIVE</item>
+        <item>OUTSIDE MODE</item>
+        <item>SIGN OUT</item>
+    </array>
+
+
+    <bool name="OUTSIDE_MODE">false</bool>
+
+</resources>

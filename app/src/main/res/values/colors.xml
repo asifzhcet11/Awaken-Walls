@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#383838</color>
+    <color name="colorPrimaryDark">#383838</color>
+    <color name="colorAccent">#383838</color>
+    <color name="light">#E8B212</color>
+    <color name="humidity">#479CD4</color>
+    <color name="distance">#E4DBD1</color>
+    <color name="temperature">#DBD19F</color>
+    <color name="imageBackground">#f4f4f4</color>
+
+
+</resources>

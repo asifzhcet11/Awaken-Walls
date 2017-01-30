@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Awaken Walls</string>
+    <string name="PREF_FILE">APP_PREF_FILE</string>
+    <string name="USER_NAME">USER_NAME</string>
+    <string name="USER_ADDRESS">USER_ADDRESS</string>
+    <string name="USER_CITY">USER_CITY</string>
+    <string name="USER_POSTCODE">USER_POSTCODE</string>
+    <string name="USER_COUNTRY">USER_COUNTRY</string>
+    <string name="USER_IMAGE">USER_IMAGE</string>
+    <string name="REMEMBER_ME">REMEMBER_ME</string>
+    <string name="IMAGES_UUID">IMAGES_UUID</string>
+
+
+
+
+
+
+</resources>
