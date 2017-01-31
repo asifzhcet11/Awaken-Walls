@@ -50,6 +50,8 @@ public class UserLogin extends Activity {
 
         //creating the bind service for the mqtt send and recieve values
         Intent intent = new Intent(this, MqttDataRetrieveService.class);
+
+
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 
 
@@ -113,10 +115,6 @@ public class UserLogin extends Activity {
             mqttDataRetrieveService = localBinderService.getService();
             mqttDataRetrieveService.setActivityContext(UserLogin.this);
             mqttDataRetrieveService.setRemember_me(remember_me);
-            Intent intent = new Intent(UserLogin.this, MqttDataRetrieveService.class);
-
-            // starting the service
-            startService(intent);
 
             //setting the intent if the user has previously selected the remember me
             mqttDataRetrieveService.setIntent(rememberMe);

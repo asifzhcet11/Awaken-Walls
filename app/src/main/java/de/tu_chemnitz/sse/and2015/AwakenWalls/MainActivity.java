@@ -110,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 
 
-        // starting the service
-          //startService(intent);
 
         // setting the menu
         resources = getResources();
