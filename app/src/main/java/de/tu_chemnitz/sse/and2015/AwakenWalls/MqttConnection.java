@@ -50,7 +50,7 @@ public class MqttConnection {
 
         //connect to client with the username and password
         options.setUserName(USERNAME);
-        options.setAutomaticReconnect(true);
+        //options.setAutomaticReconnect(true);
         options.setPassword(PASSWORD.toCharArray());
 
         clientId = MqttClient.generateClientId();

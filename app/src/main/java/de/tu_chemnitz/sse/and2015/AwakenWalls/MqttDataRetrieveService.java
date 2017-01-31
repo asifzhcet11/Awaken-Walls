@@ -70,10 +70,6 @@ public class MqttDataRetrieveService extends Service {
     //images String
     private ArrayList<String> images = new ArrayList<String>();
 
-    //FILTER for the broadcast reciever
-    final static String ACTION_SENSORS = "ACTION_SENSORS";
-    final static String INTENT_SENSORS = "INTENT_SENSORS";
-
     //dialog box when app is fetching the images
     private SweetAlertDialog fetchingImageDialog;
 
@@ -91,6 +87,8 @@ public class MqttDataRetrieveService extends Service {
 
     //remember me status of the user login
     private CheckBox remember_me;
+
+    private DataFromServer dataFromServer;
 
     @Nullable
     @Override
@@ -185,9 +183,7 @@ public class MqttDataRetrieveService extends Service {
                         break;
                 }
 
-                String[] SENSOR_VALUES = {temperatureValue, humidityValue, lightValue, distanceValue};
-                //Broadcasting the sensor values
-                BrodcastData(ACTION_SENSORS, INTENT_SENSORS, SENSOR_VALUES);
+                dataFromServer = new DataFromServer(temperatureValue, humidityValue, lightValue, distanceValue);
 
 
             }
@@ -215,13 +211,13 @@ public class MqttDataRetrieveService extends Service {
         DataRetrieveServiceClient.close();
     }
 
-    //Broadcasting the intent data by setting the action Filter and intent filter
-    public void BrodcastData(String actionFilter, String intentFilter, String[] intentData) {
-        Intent intent = new Intent();
-        intent.setAction(actionFilter);
-        intent.putExtra(intentFilter, intentData);
-        sendBroadcast(intent);
+
+    public DataFromServer getDataFromServer()
+    {
+        return this.dataFromServer;
     }
+
+
 
     //publish messaging by using the mqtt andriod client
     public void publishMessage(String topic, String message) {

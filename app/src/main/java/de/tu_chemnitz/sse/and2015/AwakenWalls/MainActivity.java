@@ -36,10 +36,7 @@ public class MainActivity extends AppCompatActivity {
     // sensor values object
     private DataFromServer dataFromServer;
 
-    //broadcast reciever for the brodcasted sensor values by the service "MqttDataRetrieveService"
-    private SensorValuesReceiver sensorValuesReceiver;
-
-    //View Pager for the sensor values
+     //View Pager for the sensor values
     private HorizontalInfiniteCycleViewPager horizontalInfiniteCycleViewPager;
 
     // Adapter for setting the View Pager for the sensor values
@@ -129,13 +126,6 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
 
-        //setting the broadcast reciever for the sensor value to be received from the Service
-        sensorValuesReceiver = new SensorValuesReceiver();
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(MqttDataRetrieveService.ACTION_SENSORS);
-        registerReceiver(sensorValuesReceiver, intentFilter);
-
-
         //retrieving the values from the Shared prefrences if user has already activated the outside mode or not
         SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(getString(R.string.PREF_FILE), MODE_PRIVATE);
         outsideMode = sharedPreferences.getBoolean(String.valueOf(R.bool.OUTSIDE_MODE), false);
@@ -174,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
             unbindService(mConnection);
             isBind = false;
         }
-        unregisterReceiver(sensorValuesReceiver);
+
     }
 
 
@@ -211,20 +201,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private class SensorValuesReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            String[] sensorValues = intent.getStringArrayExtra(INTENT_SENSORS);
-            temperature = sensorValues[0];
-            humidity = sensorValues[1];
-            light = sensorValues[2];
-            distance = sensorValues[3];
-
-            dataFromServer = new DataFromServer(temperature, humidity, light, distance);
-            MainActivity.this.setAdapter(dataFromServer);
-        }
-    }
 
     public void setAdapter(DataFromServer dataFromServer)
 
@@ -243,6 +219,8 @@ public class MainActivity extends AppCompatActivity {
             MqttDataRetrieveService.LocalBinderService localBinderService = (MqttDataRetrieveService.LocalBinderService) iBinder;
             mqttDataRetrieveService = localBinderService.getService();
             isBind = true;
+            dataFromServer = mqttDataRetrieveService.getDataFromServer();
+            MainActivity.this.setAdapter(dataFromServer);
         }
 
         @Override
